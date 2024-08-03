@@ -79,8 +79,33 @@
     <button type="button" class="btn-2" id="btn-2" onclick="logout()">
         Logout
     </button>
-    <script>
 
+
+    <script>
+         function login() {
+            const username = document.getElementById('user-name');
+            const name = username.value;
+            
+            localStorage.setItem('user-name', name);
+            if (!name) {
+                alert("Please enter your name")
+                return;
+
+            }
+            const greet = document.getElementById('greet');
+
+            if (name) {
+                greet.innerText = `Hello ${name} ..!!`
+                username.style.display = 'none';
+                btn.style.display = 'none';
+                document.getElementById('user-container').style.display = 'none';
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('user-name');
+            window.location.reload();
+        }
     </script>
 </body>
 </html>
